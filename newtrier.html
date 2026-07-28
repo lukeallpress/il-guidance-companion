@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Study: New Trier Township High School District 203 — Illinois AI Guidance Companion</title>
+  <meta name="description" content="How New Trier Township High School District 203 is organizing readiness, policy, and classroom practice around the Illinois State Board of Education's Artificial Intelligence Guidance.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232c5234'/%3E%3Crect x='20' y='20' width='24' height='24' rx='5' fill='none' stroke='%23c1c6c8' stroke-width='3'/%3E%3Cpath d='M32 8v12M32 44v12M8 32h12M44 32h12' stroke='%23c1c6c8' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* New Trier brand overlay — official district tokens:
+       secondary green #2C5234 leads on this page; primary navy #002855 accents */
+    body.nt {
+      --navy: #2c5234;
+      --navy-deep: #16301c;
+      --navy-soft: #3c6b47;
+      --blue: #2a5c94;
+      --blue-bright: #aec4b2;
+      --sky: #eef2ef;
+      --sky-deep: #d9e2da;
+      --gold: #002855;          /* district navy as the accent */
+      --gold-soft: #e8edf3;
+    }
+    .nt .kicker { color: #aec4b2; }
+    .nt-hero p.lede { color: #ccdccf; }
+    .nt-hero .subtitle { color: #d5e2d7; }
+    .nt-hero .brand span { color: #aec4b2; }
+    .cs-section { margin: 44px 0; max-width: 78ch; }
+    .cs-section h2 { color: var(--navy); font-size: 24px; margin-bottom: 12px; letter-spacing: -.01em; }
+    .cs-section p { font-size: 16px; }
+    .placeholder {
+      border: 1.5px dashed var(--sky-deep);
+      background: var(--sky);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+    }
+    .placeholder b { color: var(--navy); display: block; font-family: var(--font-display); margin-bottom: 4px; }
+    .tenet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .tenet-card {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 16px 18px; box-shadow: var(--shadow-soft);
+    }
+    .tenet-card .n {
+      font-family: var(--font-ui); font-weight: 700; font-size: 13px;
+      color: var(--white); background: var(--navy);
+      border-radius: 999px; padding: 2px 10px; display: inline-block; margin-bottom: 8px;
+    }
+    .tenet-card p.t { font-family: var(--font-serif); font-style: italic; font-size: 14.5px; margin: 0 0 10px; color: var(--ink); }
+    .tenet-card p.d { font-size: 13px; color: var(--ink-soft); margin: 0; }
+    @media (max-width: 700px) { .tenet-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="nt">
+
+  <header class="hero nt-hero">
+    <div class="hero__inner">
+      <div class="brand">
+        <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="12" fill="rgba(255,255,255,.08)"/>
+          <text x="32" y="42" text-anchor="middle" fill="#aec4b2" font-family="Libre Baskerville, serif" font-weight="700" font-size="24">NT</text>
+        </svg>
+        <div>
+          <b>New Trier Township High School District 203</b>
+          <span>Featured implementer · Illinois AI Guidance Companion</span>
+        </div>
+      </div>
+      <div class="hero__lead">
+        <div>
+          <span class="kicker">Case study · In development with the district</span>
+          <h1>Putting the Illinois AI Guidance to work</h1>
+          <p class="subtitle">Readiness, policy, and classroom practice — anchored in the state guidance</p>
+          <p class="lede">New Trier is working through the questions every Illinois district faces:
+            shared understanding, informed use, strong policy, and AI literacy. This page follows
+            their implementation as a living example for other districts.</p>
+          <div class="hero-actions">
+            <a class="btn btn--gold" href="index.html#role=district-executive" style="text-decoration:none">See the reading paths</a>
+            <a class="btn btn--ghost" href="index.html" style="text-decoration:none">← Back to the companion</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cs-section">
+      <h2>Why feature a district?</h2>
+      <p>The ISBE guidance is deliberately context-sensitive: it asks each district to determine
+        purpose and use locally rather than prescribing one model. That makes a concrete example
+        valuable. New Trier's work shows what "deliberate, context-sensitive, and locally
+        determined" looks like in practice — not as a template to copy, but as one district's
+        honest working-through of the official material.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>Anchored in the four tenets</h2>
+      <p>The case study is organized around the guidance's own four tenets, so everything here maps
+        back to the official document.</p>
+      <div class="tenet-grid">
+        <div class="tenet-card"><span class="n">Tenet 1</span>
+          <p class="t">Teaching and learning are shaped by human relationships and by the experiences, interests, and assets each child brings into school</p>
+          <p class="d">How New Trier keeps relationships at the center of AI decisions — coming soon.</p>
+        </div>
+        <div class="tenet-card"><span class="n">Tenet 2</span>
+          <p class="t">Schools serve academic, developmental, and civic purposes concurrently</p>
+          <p class="d">How the district weighs development and citizenship alongside academics — coming soon.</p>
+        </div>
+        <div class="tenet-card"><span class="n">Tenet 3</span>
+          <p class="t">Artificial intelligence is a means to inform teaching and learning rather than an end in itself</p>
+          <p class="d">How tool decisions start from instructional need, not novelty — coming soon.</p>
+        </div>
+        <div class="tenet-card"><span class="n">Tenet 4</span>
+          <p class="t">Informed use requires deliberate, context-sensitive, and locally determined purpose and use</p>
+          <p class="d">How New Trier's local context shapes its policies and pilots — coming soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>The implementation story</h2>
+      <div class="placeholder">
+        <b>Content in development with New Trier District 203</b>
+        This section will document the district's journey through the guidance's staged work:
+        building shared understanding and readiness (pp. 103–166), district policy and governance
+        (pp. 167–179), and AI literacy and digital citizenship for students (pp. 180–229) — told in
+        the district's own words, with pointers back to the official sections they used.
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>Follow their path</h2>
+      <p>Want to work through the same material? Start with the
+        <a href="index.html#role=district-executive">District/System Executive path</a> or the
+        <a href="index.html#role=technology-operations">Technology, Data &amp; Operations path</a> —
+        the same official sections, in a suggested order.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <p><b>About this page.</b> An unofficial companion feature. New Trier Township High School
+        District 203's inclusion illustrates local implementation of the
+        <a href="https://www.isbe.net/AIGuidance" target="_blank" rel="noopener">Illinois State Board of Education's Artificial Intelligence Guidance</a>
+        (June 2026). All guidance content belongs to ISBE; district content will be reviewed by the
+        district before publication.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

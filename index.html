@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Illinois AI Guidance Companion — Find Your Reading Path</title>
+  <meta name="description" content="An unofficial navigational companion to the Illinois State Board of Education's Artificial Intelligence Guidance (June 2026). Pick your role for a page-numbered reading path into the official 408-page document.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23002855'/%3E%3Crect x='20' y='20' width='24' height='24' rx='5' fill='none' stroke='%23c1c6c8' stroke-width='3'/%3E%3Cpath d='M32 8v12M32 44v12M8 32h12M44 32h12' stroke='%23c1c6c8' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <svg class="hero__bg" viewBox="0 0 600 480" fill="none" aria-hidden="true">
+      <g stroke="#c1c6c8" stroke-width="1.2" opacity=".5">
+        <path d="M300 240 L180 140 M300 240 L420 130 M300 240 L140 300 M300 240 L460 310 M300 240 L250 400 M300 240 L390 420 M180 140 L420 130 M140 300 L250 400 M460 310 L390 420 M180 140 L140 300 M420 130 L460 310"/>
+      </g>
+      <g fill="#c1c6c8">
+        <circle cx="180" cy="140" r="5"/><circle cx="420" cy="130" r="5"/><circle cx="140" cy="300" r="5"/>
+        <circle cx="460" cy="310" r="5"/><circle cx="250" cy="400" r="5"/><circle cx="390" cy="420" r="5"/>
+      </g>
+      <rect x="272" y="212" width="56" height="56" rx="10" stroke="#c1c6c8" stroke-width="2.5" fill="#002855"/>
+      <text x="300" y="248" text-anchor="middle" fill="#c1c6c8" font-family="Roboto, sans-serif" font-weight="700" font-size="20">AI</text>
+    </svg>
+
+    <div class="hero__inner">
+      <div class="brand">
+        <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="12" fill="rgba(255,255,255,.08)"/>
+          <rect x="21" y="21" width="22" height="22" rx="5" fill="none" stroke="#c1c6c8" stroke-width="3"/>
+          <path d="M32 10v11M32 43v11M10 32h11M43 32h11" stroke="#c1c6c8" stroke-width="3"/>
+        </svg>
+        <div>
+          <b>Illinois AI Guidance Companion</b>
+          <span>An unofficial reading aid for the ISBE Artificial Intelligence Guidance</span>
+        </div>
+      </div>
+
+      <div class="hero__lead">
+        <div>
+          <span class="kicker">ISBE · June 2026 · 408 pages</span>
+          <h1>Artificial Intelligence Guidance</h1>
+          <p class="subtitle">Find your way into Illinois' official AI guidance for schools</p>
+          <p class="lede">Nobody reads 408 pages front to back. <b>Pick your role</b> and get a
+            staged, page-numbered path through the official document — start here, first pass,
+            deep dive, reference shelf. Every step opens the real ISBE text.</p>
+          <div class="hero-actions">
+            <button class="btn btn--gold" data-go="paths">Find your reading path</button>
+            <button class="btn btn--ghost" data-go="read">Open the guidance</button>
+          </div>
+        </div>
+        <div class="stats" id="stats" aria-label="At a glance"></div>
+      </div>
+    </div>
+
+    <div class="tenets">
+      <div class="tenets__inner">
+        <span class="tenets__label">The guidance's four tenets</span>
+        <ol id="tenets"></ol>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav" aria-label="Sections">
+    <div class="nav__inner">
+      <div class="tabs" role="tablist" aria-label="Companion modes">
+        <button class="tab" role="tab" id="tab-paths"   aria-controls="paths"   data-tab="paths"   aria-selected="true">Reading paths</button>
+        <button class="tab" role="tab" id="tab-read"    aria-controls="read"    data-tab="read"    aria-selected="false">Read the guidance</button>
+        <button class="tab" role="tab" id="tab-explore" aria-controls="explore" data-tab="explore" aria-selected="false">Every section</button>
+        <button class="tab" role="tab" id="tab-bundles" aria-controls="bundles" data-tab="bundles" aria-selected="false">Handoff bundles</button>
+      </div>
+      <a class="nav-cta" href="newtrier.html">Case study: New Trier</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- READING PATHS -->
+    <section class="panel is-active" id="paths" role="tabpanel" aria-labelledby="tab-paths">
+      <div class="panel-head">
+        <h2>What's your role?</h2>
+        <p>Each path is an ordered tour of the official ISBE sections most relevant to your seat —
+          built from ISBE's own Quick Start FAQ audience tags. Titles and page numbers are ISBE's, unchanged.</p>
+      </div>
+      <div class="orientation" id="orientation"></div>
+      <div class="rolegrid" id="rolegrid" role="group" aria-label="Roles"></div>
+      <div id="roledetail" class="roledetail" aria-live="polite"></div>
+
+      <div class="nt-band">
+        <div>
+          <span class="kicker">Featured implementer</span>
+          <h3>How New Trier Township High School District 203 is putting the guidance to work</h3>
+          <p>A look at how one Illinois district is organizing readiness, policy, and classroom practice
+            around the state guidance.</p>
+        </div>
+        <a class="btn" href="newtrier.html">Read the case study</a>
+      </div>
+    </section>
+
+    <!-- READ THE GUIDANCE -->
+    <section class="panel" id="read" role="tabpanel" aria-labelledby="tab-read" hidden>
+      <div class="panel-head">
+        <h2>Read the guidance</h2>
+        <p>The complete official document, right here. Page links across this site jump straight to the
+          right page. On any device you can also <a id="open-direct" href="AIGuidance.pdf" target="_blank" rel="noopener">open the PDF directly</a>.</p>
+      </div>
+      <div class="reader-bar">
+        <div class="reader-nav">
+          <button class="rbtn" id="prevpage" aria-label="Previous page">‹</button>
+          <input id="pagenum" inputmode="numeric" pattern="[0-9]*" aria-label="Page number" value="1">
+          <span class="reader-total">of <span id="pagecount">408</span></span>
+          <button class="rbtn" id="nextpage" aria-label="Next page">›</button>
+        </div>
+        <div class="reader-stops" id="reader-stops"></div>
+        <div class="reader-spacer"></div>
+        <a class="reader-open" id="open-at-page" href="AIGuidance.pdf" target="_blank" rel="noopener">Open this page in a new tab ↗</a>
+      </div>
+      <div class="reader-stage" id="reader-stage">
+        <div class="reader-msg" id="reader-msg">Loading the guidance…</div>
+        <canvas id="pdfcanvas" hidden></canvas>
+      </div>
+    </section>
+
+    <!-- EXPLORE EVERY SECTION -->
+    <section class="panel" id="explore" role="tabpanel" aria-labelledby="tab-explore" hidden>
+      <div class="panel-head">
+        <h2>Every section, every appendix</h2>
+        <p>The complete structure of the official document with exact titles and page ranges.
+          A curated path is a starting point — everything below is always reachable.</p>
+      </div>
+      <div class="explore-tools">
+        <label class="search">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search" type="search" placeholder="Search sections and appendices…" aria-label="Search sections and appendices">
+        </label>
+      </div>
+      <div id="explorelist"></div>
+    </section>
+
+    <!-- HANDOFF BUNDLES -->
+    <section class="panel" id="bundles" role="tabpanel" aria-labelledby="tab-bundles" hidden>
+      <div class="panel-head">
+        <h2>Send this to…</h2>
+        <p>Stable handoff bundles for cross-functional work. Each link opens the recipient's own
+          reading path — the substance is always the official ISBE material.</p>
+      </div>
+      <div class="bundle-grid" id="bundlegrid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <p><b>About this companion.</b> This is an unofficial navigational aid to the
+        <a id="foot-official" href="#" target="_blank" rel="noopener">Illinois State Board of Education's Artificial Intelligence Guidance</a>
+        (June 2026). It creates no new guidance: every section title, question, page reference, and
+        answer belongs to ISBE, and each reading path is simply a suggested order through the official
+        material. Always consult the
+        <a id="foot-landing" href="#" target="_blank" rel="noopener">official ISBE landing page</a> and
+        <a id="foot-faq" href="#" target="_blank" rel="noopener">Quick Start FAQ</a>.</p>
+      <p id="foot-resnote"></p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="reader.js"></script>
+</body>
+</html>
