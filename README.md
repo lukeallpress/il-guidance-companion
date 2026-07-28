@@ -1,5 +1,7 @@
 # Illinois AI Guidance Companion
 
+**Live site: https://lukeallpress.github.io/il-guidance-companion/**
+
 An unofficial **navigational companion** to the Illinois State Board of Education's
 *Artificial Intelligence Guidance* (June 2026, 408 pages). It answers one question fast:
 **where do I start?** Each role gets a staged, page-numbered reading path into the official
@@ -47,9 +49,14 @@ Then open http://localhost:8000/ (the PDF reader needs http, not file://).
 
 ## Deploy
 
-GitHub Pages serves this folder as-is — no build step. Push to a repo, enable Pages on the main
-branch root. The 16 MB PDF is fine for GitHub (limit is 100 MB/file) and Pages handles statewide
-traffic comfortably.
+GitHub Pages serves this folder as-is from `main` — no build step. To publish changes:
+
+```bash
+git add -A && git commit -m "Update reading paths" && git push
+```
+
+Pages rebuilds in about a minute. The 16 MB PDF is fine for GitHub (limit is 100 MB/file) and Pages
+handles statewide traffic comfortably.
 
 ## Deep links
 
