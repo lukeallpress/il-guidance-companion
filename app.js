@@ -147,7 +147,7 @@
           var open = opts.openAll || i < 2; /* Start Here + First Pass open by default */
           return '<div class="stage' + (open ? ' is-open' : '') + '" data-stage="' + st.id + '">' +
             '<button class="stage__head" aria-expanded="' + open + '">' +
-              '<span class="stage__num">' + (i + 1) + '</span>' +
+              '<span class="stage__num">' + i + '</span>' +
               '<span class="stage__title"><h4>' + esc(st.name) + '</h4><p>' + esc(st.blurb) + '</p></span>' +
               '<svg class="stage__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' +
             '</button>' +
@@ -159,8 +159,8 @@
     if (!opts.noScroll) detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
     try { history.replaceState(null, '', '#role=' + id); } catch (_) {}
     /* reader.js loads after app.js, so it picks up IL_routeStops at boot */
-    window.IL_routeStops = routeStops(r, band);
-    if (window.ILReader) window.ILReader.setStops(window.IL_routeStops);
+    window.IL_routeStops = { stops: routeStops(r, band), roleName: r.name, roleId: r.id };
+    if (window.ILReader) window.ILReader.setStops(window.IL_routeStops.stops, r.name);
   }
 
   /* First-pass stops for the reader toolbar */
@@ -234,6 +234,17 @@
       e.preventDefault();
       setTab('paths');
       renderRole(or_.getAttribute('data-openrole'));
+      return;
+    }
+    var backToPath = e.target.closest('[data-openrole-current]');
+    if (backToPath) {
+      setTab('paths');
+      if (window.IL_routeStops) renderRole(window.IL_routeStops.roleId);
+      return;
+    }
+    if (e.target.closest('#ps-allroles')) {
+      setTab('paths');
+      $('#rolegrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
     var cl = e.target.closest('[data-copylink]');

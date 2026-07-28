@@ -124,8 +124,23 @@
         <div class="reader-spacer"></div>
         <a class="reader-open" id="open-at-page" href="view.html" target="_blank" rel="noopener">Open this page in a new tab ↗</a>
       </div>
-      <div class="reader-pages" id="reader-pages">
-        <div class="reader-msg">Loading the guidance…</div>
+      <div class="reader-page" id="reader-page">
+        <div class="reader-frame" id="reader-frame">
+          <div class="reader-msg" id="reader-msg">Loading the guidance…</div>
+        </div>
+      </div>
+      <div class="pageturn">
+        <button class="ptbtn" id="pt-prev" type="button">‹ Previous page</button>
+        <span class="pt-label" id="pt-label">Page 1 of 408</span>
+        <button class="ptbtn" id="pt-next" type="button">Next page ›</button>
+      </div>
+      <div class="pathstrip" id="pathstrip" hidden>
+        <div class="pathstrip__head">
+          <b id="ps-title">Your first pass</b>
+          <button class="rbtn rbtn--stop" id="nextstop2" type="button"></button>
+        </div>
+        <ol class="pathstrip__list" id="ps-list"></ol>
+        <p class="pathstrip__foot">Want a different route? <button type="button" class="linklike" data-openrole-current>Back to your full path</button> or <button type="button" class="linklike" id="ps-allroles">pick another role</button>.</p>
       </div>
     </section>
 

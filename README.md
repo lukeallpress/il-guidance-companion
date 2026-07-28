@@ -22,7 +22,7 @@ ISBE's own Quick Start FAQ audience tags.
 | `newtrier.html` | Case study page for New Trier Township High School District 203 (district-green branding) |
 | `data.js` | **All content**: roles, paths, FAQ entry points, source map, bundles. Edit here. |
 | `app.js` | View logic (vanilla JS, no build step) |
-| `reader.js` | In-page PDF reader: continuous scroll, lazy per-page rendering, route-aware "next stop" navigation, resumes your last position |
+| `reader.js` | In-page PDF reader: one page at a time so the site stays scrollable around it, with a route-aware path strip ("stop N of M", next-stop, jump to any stop) and position resume |
 | `view.html` + `view.js` | Standalone full-document viewer ("open in new tab" target) — always renders in-browser, so managed browsers that force-download PDFs still work |
 | `styles.css` | Design tokens + components. New Trier District 203 branding (navy `#002855`, green `#2C5234`, silver `#C1C6C8`, Libre Baskerville + Roboto — from newtrier.k12.il.us); the case-study page swaps green to the fore in-page. |
 | `AIGuidance.pdf` | The official ISBE document (hosted here so page links work) |
