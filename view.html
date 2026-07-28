@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artificial Intelligence Guidance — ISBE (full document)</title>
+  <meta name="description" content="Full-document viewer for the Illinois State Board of Education's Artificial Intelligence Guidance (June 2026).">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23002855'/%3E%3Crect x='20' y='20' width='24' height='24' rx='5' fill='none' stroke='%23c1c6c8' stroke-width='3'/%3E%3Cpath d='M32 8v12M32 44v12M8 32h12M44 32h12' stroke='%23c1c6c8' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #002855;
+      --navy-deep: #001733;
+      --green: #2c5234;
+      --silver: #c1c6c8;
+      --bar-h: 56px;
+    }
+    * { box-sizing: border-box; }
+    /* min-height, not height: a fixed-height body would end the sticky bar's
+       containing block at one viewport and let it scroll away. */
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: #3f4a55;
+      font-family: "Roboto", system-ui, sans-serif;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    :focus-visible { outline: 3px solid var(--silver); outline-offset: 2px; }
+
+    /* ---------- Top bar ---------- */
+    .bar {
+      position: sticky; top: 0; z-index: 20;
+      height: var(--bar-h);
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 14px;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .bar__title {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .bar__title small { display: block; font-family: "Roboto", sans-serif; font-size: 11px; color: #9fb3c8; font-weight: 400; }
+    .spacer { flex: 1; }
+    .back {
+      flex: none; display: inline-flex; align-items: center; gap: 6px;
+      color: #fff; text-decoration: none; font-size: 13px; font-weight: 500;
+      border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 6px 13px;
+      white-space: nowrap;
+    }
+    .back:hover { background: rgba(255,255,255,.12); }
+    .grp { display: flex; align-items: center; gap: 4px; flex: none; }
+    .ibtn {
+      border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: #fff;
+      border-radius: 8px; width: 34px; height: 34px; font-size: 16px; line-height: 1;
+      cursor: pointer; display: grid; place-items: center;
+    }
+    .ibtn:hover { background: rgba(255,255,255,.18); }
+    .ibtn:disabled { opacity: .35; cursor: default; }
+    #pageinput {
+      width: 58px; height: 34px; text-align: center;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 8px;
+      background: rgba(0,0,0,.25); color: #fff;
+      font: 700 14px "Roboto", sans-serif;
+    }
+    .of { font-size: 13px; color: #9fb3c8; white-space: nowrap; }
+    .dl {
+      flex: none; color: #cfe0ee; font-size: 12.5px; text-decoration: none;
+      border-bottom: 1px dotted rgba(207,224,238,.6); white-space: nowrap;
+    }
+    .dl:hover { color: #fff; }
+
+    /* ---------- Pages ---------- */
+    #doc {
+      padding: 18px 12px 60px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+    }
+    .pg {
+      width: var(--pgw, 860px);
+      max-width: 100%;
+      aspect-ratio: 612 / 792;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,.4);
+      position: relative;
+      overflow: hidden;
+      scroll-margin-top: calc(var(--bar-h) + 12px);
+    }
+    .pg canvas { display: block; width: 100%; height: auto; }
+    .pg::after {
+      content: attr(data-page);
+      position: absolute; right: 8px; bottom: 6px;
+      font-size: 10px; color: #98a4b0;
+      pointer-events: none;
+    }
+    .pg:not(.is-done)::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg, #f4f6f8 30%, #e9edf1 50%, #f4f6f8 70%);
+      background-size: 220% 100%;
+      animation: sh 1.3s linear infinite;
+    }
+    @keyframes sh { to { background-position: -220% 0; } }
+
+    .fallback {
+      max-width: 44ch; margin: 60px auto; text-align: center;
+      font-size: 15px; line-height: 1.6; color: #dbe4ec;
+    }
+    .fallback a { color: #fff; }
+
+    @media (max-width: 700px) {
+      .bar { gap: 6px; padding: 0 8px; }
+      .bar__title, .dl { display: none; }
+      #doc { padding: 10px 6px 50px; gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .pg:not(.is-done)::before { animation: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="bar">
+    <a class="back" href="index.html">‹ Reading paths</a>
+    <div class="bar__title">Artificial Intelligence Guidance
+      <small>Illinois State Board of Education · June 2026</small>
+    </div>
+    <div class="spacer"></div>
+    <div class="grp">
+      <button class="ibtn" id="zoomout" aria-label="Zoom out" title="Zoom out">−</button>
+      <button class="ibtn" id="zoomin" aria-label="Zoom in" title="Zoom in">+</button>
+    </div>
+    <div class="grp">
+      <button class="ibtn" id="prev" aria-label="Previous page">‹</button>
+      <input id="pageinput" inputmode="numeric" pattern="[0-9]*" value="1" aria-label="Page number">
+      <span class="of">/ <span id="total">408</span></span>
+      <button class="ibtn" id="next" aria-label="Next page">›</button>
+    </div>
+    <a class="dl" id="download" href="AIGuidance.pdf" download>Download PDF</a>
+  </header>
+
+  <main id="doc" aria-label="Document pages"></main>
+
+  <script src="view.js"></script>
+</body>
+</html>

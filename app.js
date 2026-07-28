@@ -158,7 +158,9 @@
 
     if (!opts.noScroll) detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
     try { history.replaceState(null, '', '#role=' + id); } catch (_) {}
-    if (window.ILReader) window.ILReader.setStops(routeStops(r, band));
+    /* reader.js loads after app.js, so it picks up IL_routeStops at boot */
+    window.IL_routeStops = routeStops(r, band);
+    if (window.ILReader) window.ILReader.setStops(window.IL_routeStops);
   }
 
   /* First-pass stops for the reader toolbar */
@@ -166,7 +168,7 @@
     if (!r || r.branches) return [];
     return (r.firstPass || []).filter(function (it) { return it.pages; }).map(function (it) {
       return { label: it.label, page: firstPage(it.pages) };
-    }).slice(0, 6);
+    });
   }
 
   /* ---------------- Explore ---------------- */

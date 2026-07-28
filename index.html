@@ -106,7 +106,8 @@
       <div class="panel-head">
         <h2>Read the guidance</h2>
         <p>The complete official document, right here. Page links across this site jump straight to the
-          right page. On any device you can also <a id="open-direct" href="AIGuidance.pdf" target="_blank" rel="noopener">open the PDF directly</a>.</p>
+          right page. You can also <a id="open-direct" href="view.html" target="_blank" rel="noopener">open the full document in its own tab</a>
+          or <a href="AIGuidance.pdf" download>download the source PDF</a>.</p>
       </div>
       <div class="reader-bar">
         <div class="reader-nav">
@@ -115,13 +116,16 @@
           <span class="reader-total">of <span id="pagecount">408</span></span>
           <button class="rbtn" id="nextpage" aria-label="Next page">›</button>
         </div>
-        <div class="reader-stops" id="reader-stops"></div>
+        <div class="reader-route" id="reader-route" hidden>
+          <span class="rr-pos" id="rr-pos"></span>
+          <span class="rr-label" id="rr-label"></span>
+          <button class="rbtn rbtn--stop" id="nextstop" type="button"></button>
+        </div>
         <div class="reader-spacer"></div>
-        <a class="reader-open" id="open-at-page" href="AIGuidance.pdf" target="_blank" rel="noopener">Open this page in a new tab ↗</a>
+        <a class="reader-open" id="open-at-page" href="view.html" target="_blank" rel="noopener">Open this page in a new tab ↗</a>
       </div>
-      <div class="reader-stage" id="reader-stage">
-        <div class="reader-msg" id="reader-msg">Loading the guidance…</div>
-        <canvas id="pdfcanvas" hidden></canvas>
+      <div class="reader-pages" id="reader-pages">
+        <div class="reader-msg">Loading the guidance…</div>
       </div>
     </section>
 

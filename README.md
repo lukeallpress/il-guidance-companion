@@ -22,7 +22,8 @@ ISBE's own Quick Start FAQ audience tags.
 | `newtrier.html` | Case study page for New Trier Township High School District 203 (district-green branding) |
 | `data.js` | **All content**: roles, paths, FAQ entry points, source map, bundles. Edit here. |
 | `app.js` | View logic (vanilla JS, no build step) |
-| `reader.js` | In-page PDF reader (PDF.js from CDN, lazy-loaded, one page at a time — mobile friendly) |
+| `reader.js` | In-page PDF reader: continuous scroll, lazy per-page rendering, route-aware "next stop" navigation, resumes your last position |
+| `view.html` + `view.js` | Standalone full-document viewer ("open in new tab" target) — always renders in-browser, so managed browsers that force-download PDFs still work |
 | `styles.css` | Design tokens + components. New Trier District 203 branding (navy `#002855`, green `#2C5234`, silver `#C1C6C8`, Libre Baskerville + Roboto — from newtrier.k12.il.us); the case-study page swaps green to the fore in-page. |
 | `AIGuidance.pdf` | The official ISBE document (hosted here so page links work) |
 | `illinois-ai-guidance-role-reading-paths.md` | The reading-paths spec this site implements |
@@ -61,7 +62,8 @@ handles statewide traffic comfortably.
 ## Deep links
 
 - `index.html#role=technology-operations` — open a role's path (used by the handoff bundles)
-- `index.html#p=144` — open the reader at a page
-- `AIGuidance.pdf#page=144` — direct PDF fallback (works in most desktop browsers)
+- `index.html#p=144` — open the embedded reader at a page
+- `view.html?page=144` — the standalone viewer at a page (what "open in a new tab" uses)
+- `AIGuidance.pdf#page=144` — direct PDF fallback (desktop browsers with inline PDF viewing)
 
 *Unofficial reading aid. All guidance content © Illinois State Board of Education.*
